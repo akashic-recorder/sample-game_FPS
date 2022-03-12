@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace AkashicRecorder
 {
@@ -9,8 +10,8 @@ namespace AkashicRecorder
         [SerializeField] int EventId = 1;
         string _address = "";
 
-        string _hostUri = "https://akaschic-recorder-api.herokuapp.com/";
-        string _postUri => $"events";
+        string _hostUri = "https://akaschic-recorder-api.herokuapp.com";
+        string _postUri => $"{_hostUri}/api/1/80001/{_address}";
 
         public ClearData Data { get; private set; } = new ClearData();
         
@@ -38,15 +39,16 @@ namespace AkashicRecorder
 
         void CallApi()
         {
-            var url = $"{_hostUri}?address={_address}&start_time={Data.start_time.ToString("yyyy-MM-dd HH:mm:ss.fff")}&end_time={Data.end_time.ToString("yyyy-MM-dd HH:mm:ss.fff")}";
-            
-            Data.event_name = eventName;
             Data.event_id = EventId;
+            Data.event_name = eventName;
+            Data.rank_num = 1;
             Data.wallet_address = _address;
             
             var json = JsonUtility.ToJson(Data);
 
-            Debug.Log(json);
+            Debug.Log($"{_postUri}\n{json}");
+            
+            UnityWebRequest.Post(_postUri, json);
         }
     }
 }
