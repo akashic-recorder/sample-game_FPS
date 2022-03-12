@@ -1,5 +1,4 @@
-﻿using AkashicRecorder;
-using Unity.FPS.Game;
+﻿using Unity.FPS.Game;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -22,15 +21,6 @@ namespace Unity.FPS.UI
         public void LoadTargetScene()
         {
             SceneManager.LoadScene(SceneName);
-            
-            if(SceneName == "MainScene")
-            {
-                AkashicManager.Instance.SetStartTime();
-            }
-            else if(SceneName == "WinScene")
-            {
-                AkashicManager.Instance.SetEndTime();
-            }
         }
     }
 }
