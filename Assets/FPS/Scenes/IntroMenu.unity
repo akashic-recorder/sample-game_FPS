@@ -1161,6 +1161,7 @@ GameObject:
   - component: {fileID: 1511519971}
   - component: {fileID: 1511519970}
   - component: {fileID: 1511519969}
+  - component: {fileID: 1511519973}
   m_Layer: 5
   m_Name: InputField (TMP) - Wallet Address
   m_TagString: Untagged
@@ -1336,6 +1337,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511519967}
   m_CullTransparentMesh: 1
+--- !u!114 &1511519973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511519967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1 &1568261934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: Akashic FPS Stage-1
-  EventDispatcher: 1
+  EventId: 1
 --- !u!4 &1568261936
 Transform:
   m_ObjectHideFlags: 0
