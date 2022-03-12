@@ -6,13 +6,13 @@ namespace AkashicRecorder
     public sealed class AkashicManager : SingletonMonoBehaviour<AkashicManager>
     {
         [SerializeField] string eventName = "Akashic FPS Stage-1";
-        [SerializeField] int EventDispatcher = 1;
+        [SerializeField] int EventId = 1;
         string _address = "";
 
-        string _privateKey = "https://akaschic-recorder-api.herokuapp.com/api/v1/private_key";
+        string _hostUri = "https://akaschic-recorder-api.herokuapp.com/";
+        string _postUri => $"events";
 
-        public DateTime StartTime { get; private set; }
-        public DateTime EndTime { get; private set; }
+        public ClearData Data { get; private set; } = new ClearData();
         
         public string Address => _address;
 
@@ -24,15 +24,29 @@ namespace AkashicRecorder
         
         public void SetStartTime()
         {
-            StartTime = DateTime.UtcNow;
-            Debug.Log("Start Game Time: " + StartTime.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            Data.start_time = DateTime.UtcNow;
+            Debug.Log("Start Game Time: " + Data.start_time.ToString("yyyy-MM-dd HH:mm:ss.fff"));
         }
         
         public void SetEndTime()
         {
-            EndTime = DateTime.UtcNow;
-            Debug.Log("End Game Time: " + EndTime.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            Data.end_time = DateTime.UtcNow;
+            Debug.Log("End Game Time: " + Data.end_time.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            
+            CallApi();
         }
-        
+
+        void CallApi()
+        {
+            var url = $"{_hostUri}?address={_address}&start_time={Data.start_time.ToString("yyyy-MM-dd HH:mm:ss.fff")}&end_time={Data.end_time.ToString("yyyy-MM-dd HH:mm:ss.fff")}";
+            
+            Data.event_name = eventName;
+            Data.event_id = EventId;
+            Data.wallet_address = _address;
+            
+            var json = JsonUtility.ToJson(Data);
+
+            Debug.Log(json);
+        }
     }
 }
