@@ -12,6 +12,16 @@ namespace AkashicRecorder
         {
             _inputField = GetComponent<TMP_InputField>();
             _inputField.onEndEdit.AddListener(SetAddress);
+            
+            CheckAddress();
+        }
+        
+        void CheckAddress()
+        {
+            if (!string.IsNullOrEmpty(AkashicManager.Instance.Address))
+            {
+                _inputField.text = AkashicManager.Instance.Address;
+            }
         }
 
         void SetAddress(string address)
