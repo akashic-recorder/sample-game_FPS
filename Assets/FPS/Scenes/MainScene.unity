@@ -921,27 +921,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2729281213166876092}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &840505894 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2015434656898269652, guid: e29d43f43cc5d82499dd9926e01847d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2729281213748808806}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &840505903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840505894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7ac4421ca34176aa52aac1cc3f8274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventId: 0
-  rank_num: 0
-  wallet_address: 
 --- !u!4 &868929744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5035642871227140182, guid: a7566d85b04856b42a956c9b162ee747,
@@ -2334,9 +2313,9 @@ Transform:
   - {fileID: 973271269}
   - {fileID: 1145582177}
   - {fileID: 642244333}
-  - {fileID: 1087481258}
-  - {fileID: 1671918716}
   - {fileID: 1510073333}
+  - {fileID: 1671918716}
+  - {fileID: 1087481258}
   - {fileID: 367426481}
   - {fileID: 752215077}
   - {fileID: 1458889822}

@@ -1,12 +1,12 @@
 {
-    "name": "fps.UI",
-    "rootNamespace": "",
+    "name": "fps.game.akashicRecorder",
+    "rootNamespace": "AkashicRecorder",
     "references": [
-        "GUID:9c5543eabb73a6249ac07b2c065ee8b4",
-        "GUID:27b7e9efd224f064990a97ed99e4456f",
-        "GUID:e9dc24b3d0971d64a9e95b6986d97af5",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:fe33a1f44d0749c29bad69a19f66c053"
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:dc47925d1a5fa2946bdd37746b2b5d48",
+        "GUID:6546d7765b4165b40850b3667f981c26"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
