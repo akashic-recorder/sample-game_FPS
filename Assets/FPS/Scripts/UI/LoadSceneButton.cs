@@ -27,6 +27,10 @@ namespace Unity.FPS.UI
             {
                 AkashicManager.Instance.SetStartTime();
             }
+            else if(SceneName == "WinScene")
+            {
+                AkashicManager.Instance.SetEndTime();
+            }
         }
     }
 }
