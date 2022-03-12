@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Text;
+using UniRx;
+using UniRx.InternalUtil;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -12,9 +16,10 @@ namespace AkashicRecorder
 
         string _hostUri = "https://akaschic-recorder-api.herokuapp.com";
         string _postUri => $"{_hostUri}/api/1/80001/{_address}";
+        // ${host}/api/1/80001/${address}
 
         public ClearData Data { get; private set; } = new ClearData();
-        
+
         public string Address => _address;
 
         public void SetAddress(string address)
@@ -22,33 +27,48 @@ namespace AkashicRecorder
             _address = address;
             Debug.Log($"Wallet address: {_address}");
         }
-        
+
         public void SetStartTime()
         {
-            Data.start_time = DateTime.UtcNow;
-            Debug.Log("Start Game Time: " + Data.start_time.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-        }
-        
-        public void SetEndTime()
-        {
-            Data.end_time = DateTime.UtcNow;
-            Debug.Log("End Game Time: " + Data.end_time.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-            
-            CallApi();
+            Data.start_time = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            Debug.Log("Start Game Time: " + Data.start_time);
         }
 
-        void CallApi()
+        public void SetEndTime()
         {
-            Data.event_id = EventId;
+            Data.end_time = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            Debug.Log("End Game Time: " + Data.end_time);
+
+            MainThreadDispatcher.StartUpdateMicroCoroutine(CallApi());
+        }
+
+        IEnumerator CallApi()
+        {
+            Data.event_id = EventId.ToString();
             Data.event_name = eventName;
-            Data.rank_num = 1;
+            Data.rank_num = 1.ToString();
             Data.wallet_address = _address;
-            
+
             var json = JsonUtility.ToJson(Data);
 
             Debug.Log($"{_postUri}\n{json}");
+
+            var www = new UnityWebRequest(_postUri, UnityWebRequest.kHttpVerbPOST)
+            {
+                uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json)),
+                downloadHandler = new DownloadHandlerBuffer()
+            };
+
+            www.SetRequestHeader( "Content-Type", "application/json" );
             
-            UnityWebRequest.Post(_postUri, json);
+            var operation = www.SendWebRequest();
+
+            operation.completed += _ =>
+            {
+                Debug.Log($"is_done: {operation.isDone}, handler: {operation.webRequest.downloadHandler.text}, error: {operation.webRequest.error}, http error: {operation.webRequest.isHttpError} network status: {operation.webRequest.isNetworkError}");
+            };
+
+            yield return operation;
         }
     }
 }
