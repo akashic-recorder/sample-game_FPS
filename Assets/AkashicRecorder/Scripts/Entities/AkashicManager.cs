@@ -14,7 +14,7 @@ namespace AkashicRecorder
         [SerializeField] int EventId = 1;
         string _address = "";
 
-        string _hostUri = "https://akaschic-recorder-api.herokuapp.com";
+        string _hostUri = "https://akashic-recorder-api.herokuapp.com";
         string _postUri => $"{_hostUri}/api/1/80001/{_address}";
         // ${host}/api/1/80001/${address}
 

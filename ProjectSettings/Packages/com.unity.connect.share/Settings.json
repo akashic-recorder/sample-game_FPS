@@ -6,7 +6,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"D:/workspace/Code/akashic-recorder-org/sample-game_FPS/Build/test1;D:/workspace/Code/akashic-recorder-org/sample-game_FPS/WebGL Builds;D:/workspace/20_Unity/FPS_Microgame-sample/Build/test1;;;;;;;\"}"
+                "value": "{\"m_Value\":\"D:/workspace/Code/akashic-recorder-org/sample-game_FPS/Builds/Release_size-optimization;D:/workspace/Code/akashic-recorder-org/sample-game_FPS/Builds/Release;D:/workspace/Code/akashic-recorder-org/sample-game_FPS/Build/test1;D:/workspace/Code/akashic-recorder-org/sample-game_FPS/WebGL Builds;D:/workspace/20_Unity/FPS_Microgame-sample/Build/test1;;;;;\"}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
